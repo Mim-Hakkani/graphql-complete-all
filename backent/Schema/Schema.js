@@ -5,6 +5,9 @@ const {
     GraphQLString
 }=graphql;
 
+
+//create a book type 
+
 const BookType = new GraphQLObjectType({
     name:'Book',
     fields:()=>({
@@ -12,4 +15,22 @@ const BookType = new GraphQLObjectType({
         name:{type:GraphQLString},
         genre:{type:GraphQLString},
     })
+})
+
+
+const RootQuery =new GraphQLObjectType({
+    name:'RootQueryType',
+    fields:{
+        book:{
+            type:BookType,
+            args:{id:{type:GraphQLString}},
+            resolve(parent,args){
+
+            }
+        }
+    }
+})
+
+module.exports = new graphql.GraphQLSchema({
+    query:RootQuery
 })
