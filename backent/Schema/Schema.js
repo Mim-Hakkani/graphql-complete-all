@@ -66,6 +66,25 @@ const RootQuery =new GraphQLObjectType({
     name:'RootQueryType',
     fields:{
 
+
+    //create schema for all books 
+        books:{
+            type:new graphql.GraphQLList(BookType),
+            resolve(parent,args){
+                return books
+            }
+        },
+
+
+    //create schema for all authors 
+
+    authors:{
+        type:new graphql.GraphQLList(AuthorType),
+        resolve(parent,args){
+            return authors
+        }
+    },
+
         // book schema  by id 
 
         book:{
