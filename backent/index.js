@@ -15,6 +15,8 @@ mongoose.connect(
   `mongodb+srv://graphQLPracticeUser:j71p7z32Rfzb2Ris@cluster0.0om44.mongodb.net/graphQLPractice?retryWrites=true&w=majority
   
   `
+
+  //   mongodb+srv://graphql-express:150132@cluster0.rfbry.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
 );
 mongoose.connection.once("open", () => {
   console.log("connected to DB by mim hakkani");
