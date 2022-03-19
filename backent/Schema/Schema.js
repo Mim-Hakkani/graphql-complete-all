@@ -73,7 +73,7 @@ const RootQuery =new GraphQLObjectType({
         books:{
             type:new graphql.GraphQLList(BookType),
             resolve(parent,args){
-                return books
+                // return books
             }
         },
 
@@ -83,7 +83,7 @@ const RootQuery =new GraphQLObjectType({
     authors:{
         type:new graphql.GraphQLList(AuthorType),
         resolve(parent,args){
-            return authors
+            // return authors
         }
     },
 
@@ -112,8 +112,35 @@ const RootQuery =new GraphQLObjectType({
 
 
 
+/***************************** *
+  Mutation Part  => add ,edit/update ,delete  apis  
+********************************/ 
+
+const Mutation = new GraphQLObjectType({
+    name:'Mutaion',
+    fields:{
+            addAuthor: {
+      type: AuthorType,
+      args: {
+        name: { type: new graphql.GraphQLNonNull(GraphQLString) },
+        age: { type: new graphql.GraphQLNonNull(graphql.GraphQLInt) },
+      },
+      resolve(parent, args) {
+        let author = new Author({
+          name: args.name,
+          age: args.age,
+        });
+        return author.save();
+      },
+    }
+    }
+    
+})
+
+
 module.exports = new GraphQLSchema({
-    query:RootQuery
+    query:RootQuery,
+    mutation: Mutation,
 })
 
 
