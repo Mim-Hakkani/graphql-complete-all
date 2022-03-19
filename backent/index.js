@@ -28,7 +28,8 @@ const port = 8000
 
 
 app.use('/graphql', graphqlHTTP({
- Schema:Schema
+ schema:Schema,
+ graphiql:true
 }));
 
 
