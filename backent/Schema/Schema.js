@@ -51,6 +51,12 @@ const AuthorType = new GraphQLObjectType({
         id:{type:graphql.GraphQLID},
         name:{type:GraphQLString},
         age:{type:graphql.GraphQLInt},
+        books:{
+            type:new graphql.GraphQLList(BookType),
+            resolve(parent,args){
+                return _.filter(books,{authorId:parent.id})
+            }
+        }
     })
 })
 
